@@ -18,8 +18,8 @@
 	->web  app  db  である
 
 + ruby-build
-rbenv に使用されているgem
 rubyの各バージョンのインストールを簡単にしてくれる。
+rbenv に使用されているgem
 rbenv install コマンドが使えるのはこれのおかげ
 
 # capistrano 一連の動作
@@ -80,4 +80,17 @@ https://www.commonplaces.com/blog/web-development-what-is-staging/<br>
 インスタンス化
 
     
-	
++ :format
+	defalut :airbrussh
+	SSHKit なるもので使われる。
+	他オプションとして、 :dot , :pretty がある
+	cf) 
+	+ aribrussh >> ssh において log をきれいに表示（フォーマット）してくれるもの？
+	基本いじらなくてよさそう。
+	+ SSHKit >> capistrano が ssh の接続に関して使用しているツールキット(gem)
+	[こちらがわかりやすいかも](https://48n.jp/blog/2016/06/14/learn-ssh-kit/)
+
++ :pty
+pseudo-terminal のこと？
+
+
