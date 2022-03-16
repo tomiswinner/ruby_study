@@ -47,3 +47,103 @@ md5sum でデータが改竄されてないからチェックできる(暗号系
 ディレクトリやプログラムを明示してくれる。
 alias ='ls -F' などでエイリアスにすれば常にやってくれる。
 
+
+GRUB GRand Unified Boot loader
+HDDからOSを起動するブートローダの一部。
+The GRUB (Grand Unified Bootloader) is a bootloader available from the GNU project. A bootloader is very important as it is impossible to start an operating system without it. It is the first program which starts when the program is switched on. The bootloader transfers the control to the operating system kernel.
+
+GRUB is the default bootloader for many of the Linux distributions.
+https://www.tutorialspoint.com/what-is-grub-in-linux
+cf) grub-mkconfig
+設定ファイルを grub に反映させるコマンド
+・grep -f [file]
+ファイルから検索パターンを読み込むオプション
+・ACPI Advanced Configuration and Power Interface
+OS側から電源を切るように指示をできるようにしたインターフェース。本来、APMなるハードで電源管理していた。
+シャットダウンや再起動はACPIイベントと認識される。
+acpid がACPIイベントを監視するデーモンである。
+
+・sed  置換を行える
+sed s/文字列a/文字列b/   a を bに置換
+sed  行番号,行番号d  間の行を削除
+
+・SGID Set Group ID
+誰が操作しても、セットしたグループの権限で実行する
+chmod 2○○○ とする(本来の権限の前に2を付与する)か、 chmod g+s [file] でできる。
+cf)SUID Set User ID
+ユーザー版
+・chmod  change mode
+アクセス権の変更
+・chown change owner
+所有ユーザー、グループの変更
+chown :[group]    =   chgrp [group]
+・chgrp
+所有グループの変更
+・ln [ link source ] [ new name ]
+-s オプションをつけて、シンボリックリンクにするのが一般的
+cf)>inode     ( index node )
+ファイルの管理用の番号
+>ハードリンク
+「.」「..」もハードリンク
+>シンボリックリンク
+デスクトップなんかのショートカットはこれ。目的のファイルへのパスである。
+・uniq -d [ file ]
+ファイルの重複した行のみを表示する。
+
+・nice 値　
+ユーザーが作業する際の優先度を決める値。
+ユーザー用の空間の中での優先度。
+cpu はコア数 n のプロセスしか実行できない。( n 以上のプロセスは高速で切り替えしながら対応)
+cf) priority 値
+linux kernel が実際に利用する値
+The priority value is the process’s actual priority which is used by the Linux kernel to schedule a task.
+In Linux system priorities are 0 to 139 in which 0 to 99 for real-time and 100 to 139 for users.
+
+https://medium.com/@chetaniam/a-brief-guide-to-priority-and-nice-values-in-the-linux-ecosystem-fb39e49815e0
+
+>>renice
+実行中のコマンドの nice 値を変更する
+renice [-n] nice値 オプション
+
+・シェル変数
+echo $CONSTANT   で確認できる
+設定するなら、CONSTANT = val
+
+・共有ライブラリ
+cf) LD_LIBRARY_PATH
+LD = Linker  or   Loader   
+linker  >>  executable file を生成するもの。
+loder  >>  executable file をメモリへロードするもの。
+
+https://www.tutorialspoint.com/difference-between-linker-and-loader
+
+・grub-install
+GRUB をインストールするコマンド
+・gzip
+Lempel-ziv なるアルゴリズムを用いてファイルを圧縮する。linux でよく使われる圧縮方式、[    ].gz ファイルとなる
+gzip -d [  ] = gunzip  = ファイルを展開
+
+・特殊記号
+＊ >> 0文字以上の文字列、ワイルドカード
+. >> カレントディレクトリなので任意の1文字にならない！>> ? が対応
+'  >> 囲むとメタ文字も普通の文字列としてくれる
+$ >> 変数
+¥ >> 次1文字をエスケープ
+｀>> 囲むと変数やコマンドとしてみなし、実行結果を文字列で返す
+
+tutorialspoint.comtutorialspoint.com
+What is GRUB in Linux?
+What is GRUB in Linux? - The GRUB (Grand Unified Bootloader) is a bootloader available from the GNU project. A bootloader is very important as it is impossible ...
+
+MediumMedium
+A brief guide to priority and nice values in the linux ecosystem
+Using nice values to control the priority of your processes.
+Reading time
+4 min read
+2019年4月17日 (259 kB)
+https://medium.com/@chetaniam/a-brief-guide-to-priority-and-nice-values-in-the-linux-ecosystem-fb39e49815e0
+
+
+tutorialspoint.comtutorialspoint.com
+Difference Between Linker and Loader
+Difference Between Linker and Loader - In this post, we will understand the difference between a linker and a loader −LinkerThe main function of the linker is ...
