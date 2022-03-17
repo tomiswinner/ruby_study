@@ -147,3 +147,39 @@ https://medium.com/@chetaniam/a-brief-guide-to-priority-and-nice-values-in-the-l
 tutorialspoint.comtutorialspoint.com
 Difference Between Linker and Loader
 Difference Between Linker and Loader - In this post, we will understand the difference between a linker and a loader −LinkerThe main function of the linker is ...
+
+
+
+
+
+
+
+## コマンド
++ lf -F
+タイプ識別子をつけて表示してくっれる。
+alis ls = 'ls -F' とすれば ls がデフォルトで -F となる。
+
+
+let コマンド
+算術式を評価してくれるコマンド
+
+- Ctrl-a:  move cursor to the beginning of the line
+- Ctrl-e:  move cursor to the end of the line
+- Meta-b:  (or Alt-b), move backward one word
+- Meta-f:  (or Alt-f), move forward one word
+- Ctrl-u:  Cut from cursor to beginning of line
+- Ctrl-k:  Cut from cursor to end of line
+- Ctrl-w:  Cut previous word
+- Ctrl-y:  Paste what you just cut with Ctrl-u, Ctrl-k, or
+           Ctrl-w
+
+
++ sed s コマンド
+正規表現で置換してくれる。
+"s/,,/,/"  であれば、「,,」を「,」にしてくれる。
+
++ pushd と popd と dirs
+pushd [directroy] で dirs に追加、 popd で解放のスタック
+pushd するとそのディレクトリへ移動できる。その時、元いたディレクトリが dirs に追加される。
+この状態で、popd をすると、元居た場所へ戻れるという寸法。
+
