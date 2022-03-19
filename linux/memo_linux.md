@@ -1,3 +1,11 @@
+
+## VIM
++ word と WORD
+word >> vim の config の iskeyword に設定された文字列から構成されるもの。
+WORD >> 空白で区切られた塊すべて　WORDs are separated by whitespace
+
+
+
 + 「<<<」 指定した文字列を**標準入力**に出すことができる。
 これにより echo などで変数を渡す必要がなくなる？
 正直 echo でいいんじゃないかとは思う<br>
@@ -182,4 +190,8 @@ let コマンド
 pushd [directroy] で dirs に追加、 popd で解放のスタック
 pushd するとそのディレクトリへ移動できる。その時、元いたディレクトリが dirs に追加される。
 この状態で、popd をすると、元居た場所へ戻れるという寸法。
+
+
+
+
 
