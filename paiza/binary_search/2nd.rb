@@ -4,10 +4,12 @@ def binary_search(array, len_arr, qp)
   right = len_arr
   while left < right
     mid = (left + right)/2
-    if qp < array[mid]
-      right = mid 
-    elsif array[mid] < qp
+    if array[mid] < qp
+      # 逆だと動かない
+      # しっかり確認
       left = mid + 1
+    else
+      right = mid 
     end
   end
   return right.to_i
