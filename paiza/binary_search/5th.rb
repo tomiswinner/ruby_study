@@ -10,3 +10,5 @@ mid = (left + right) / 2
 while 
   mid = (left + right) / 2
   for
+
+# 長さxノパイプをk本切り出せるなら y<= x のすべての yについて長さyのパイプをk本切り出せる
