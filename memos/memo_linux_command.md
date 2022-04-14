@@ -26,3 +26,15 @@ $ echo $ushiro $mae
 $ read mae ushiro <<< "mae ushiro"
 $ echo $ushiro $mae
 ヒアストリングの使いどころの一例です。
+
++ scp [コピー対象ファイル] [sshユーザー名]@[ssh ipアドレス]:/[パス]
+  ローカルPC の　.ssh/config ファイルに設定が書いてある。
+  Host が設定されていれば、それを目的語にして scp, ssh ができる。
+  以下の環境変数を確認すればわかる
+  + HOSTNAME
+  ユーザー名が格納
+  + SSH_CLIENT
+  SSH_CLIENT shows the address of the client system, the outgoing port number on the client system, and the incoming port on the server
+
+  + SSH_CONNECTION
+  . Identifies the client and server ends of the connection. The variable contains four space-separated values: client ip-address, client port number, server ip-address and server port number.

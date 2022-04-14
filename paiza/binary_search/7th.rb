@@ -19,9 +19,9 @@ ng = L
 
 while ng - ok > 1
   mid = (ok + ng) / 2
-  puts "mid:#{mid}"
-  puts "ok:#{ok}"
-  puts "ng:#{ng}"
+  # puts "mid:#{mid}"
+  # puts "ok:#{ok}"
+  # puts "ng:#{ng}"
   n - 1
   tmp_len = 0
   cnt_divided = 0
@@ -32,8 +32,8 @@ while ng - ok > 1
       tmp_len = 0
     end
   end
-  puts "cnt:#{cnt_divided}"
-  if k <= cnt_divided
+  # puts "cnt:#{cnt_divided}"
+  if n <= cnt_divided
     ok = mid
   else
     ng = mid
