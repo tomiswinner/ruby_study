@@ -1,9 +1,9 @@
 # n-1 <= k <= 20,000 なので、分割する長さは必ず切れ目以上となるか
 
-require "stringio"
+# require "stringio"
 
-$stdin = StringIO.new("23 5 7
-2 6 9 10 12 15 19")
+# $stdin = StringIO.new("23 5 7
+# 2 6 9 10 12 15 19")
 
 L, n, k = gets.chomp.split.map!{|n| n.to_i}
 
@@ -22,13 +22,13 @@ while (ng - ok).abs > 1
   cnt = 0
   (arr_breaks.length-1).times do |i|
     tmp_len += arr_breaks[i+1] - arr_breaks[i] 
-    if tmp_len > mid
+    if tmp_len > midco
       # mid となった時、arr_break[i]で切れ目を入れる
       tmp_len = arr_breaks[i+1] - arr_breaks[i] 
       cnt += 1
     end
   end
-  # puts "ok:#{ok}, ng:#{ng}, cnt:#{cnt}" 
+  puts "ok:#{ok}, ng:#{ng}, cnt:#{cnt}" 
   # cnt は切れ目の数なので、n-1 を対象とする
   if n-1 < cnt
     ng = mid

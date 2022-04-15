@@ -13,6 +13,7 @@ ex) cin >> n >> k;
 + std::vector
 動的配列を宣言する。
 ex) vector<double exmp;
+ex) vector<int> a(k + 2, 0); k+2 個の 0 で要素を埋める。
 
 + rbegin, rend
 降順ソート、以下どちらでもOK
@@ -24,3 +25,5 @@ sort(A.begin(), A.end(),  greater<int>());
 ex)int sum = std::accumulate(v.begin(), v.end(), 0);
 
 
++ while(){}
+while の{} は省略できるっぽいふざけんな
