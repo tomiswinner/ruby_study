@@ -16,13 +16,13 @@ arr_B = gets.chomp.split.map!{|n| n.to_i}
 
 k = gets.chomp.to_i
 
+cnt = 0
 
 ok = 10**8 + 10 **8
 ng = -1
 
 while (ok - ng).abs > 1
   mid = (ok + ng) / 2 
-  cnt = 0
   arr_A.each do |elem_a|
     arr_B.each do |elem_b|
       if elem_a >= mid - elem_b || elem_a <= mid - elem_b 
@@ -30,7 +30,6 @@ while (ok - ng).abs > 1
       end
     end
   end
-
   puts "cnt:#{cnt}"
   if k <= cnt
     ok = mid
