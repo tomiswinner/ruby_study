@@ -25,7 +25,7 @@ while (ok - ng).abs > 1
   cnt = 0
   arr_A.each do |elem_a|
     arr_B.each do |elem_b|
-      if elem_a >= mid - elem_b || elem_a <= mid - elem_b 
+      if elem_a >= elem_b - mid &&  elem_a <= mid - elem_b 
         cnt += 1
       end
     end
@@ -47,10 +47,10 @@ puts ok
 # x 以下の値が何個あるか調べて、条件を満たす最小の x を探索する。
 # A を固定したとき（＝列を固定）、A_i - B_j .abs <= x であればよい。
 # abs を外すと -(A_i - B_j) <= x or (A_i - B_j) <= x
-# つまり A_i - B_j >= x or A_I - B_j <= x
-# A_i >= x - B_j or A_i <= x - B_j である
+# つまり -A_i + B_j <= x or A_I - B_j <= x
+# A_i - B_j >= -x or A_i <= x - B_j
+# A_i >= B_j - x or A_i <= x - B_j
 # 含まれている x 以下の個数を w とすると、 k <= w となる（k番目 = x 以下の値が k 個）最小値 x を求める
-
 
 
 
