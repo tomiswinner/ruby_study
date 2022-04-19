@@ -38,3 +38,9 @@ $ echo $ushiro $mae
 
   + SSH_CONNECTION
   . Identifies the client and server ends of the connection. The variable contains four space-separated values: client ip-address, client port number, server ip-address and server port number.
+
+## VIM
++ :sh
+  シェルに入れる。exit で出れる。
+  [こちら](https://www.tweeeety.blog/entry/2016/11/10/001855)
+

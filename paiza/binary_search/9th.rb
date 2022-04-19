@@ -1,4 +1,5 @@
 require "stringio"
+require "byebug"
 
 $stdin = StringIO.new("5
 0 1 2 3 4
@@ -14,21 +15,52 @@ m = gets.chomp.to_i
 
 arr_B = gets.chomp.split.map!{|n| n.to_i}
 
+def u_bound(arr, tar)
+  ng  = -1
+  ok = arr.length - 1
+  while (ok - ng).abs > 1
+    mid = (ok + ng) / 2
+    if tar >= arr[mid]
+      ok = mid
+    else
+      ng = mid
+    end
+  end
+  return ok
+end
+
+def l_bound(arr, tar)
+  ok = 0
+  ng = arr.length
+  while (ok - ng).abs > 1
+    mid = (ok + ng) / 2
+    if arr[mid] <= tar
+      ok = mid
+    else
+      ng = mid
+    end
+  end
+  return ok 
+end
+
 k = gets.chomp.to_i
+arr_B.sort!
 
 
 ok = 10**8 + 10 **8
 ng = -1
 
 while (ok - ng).abs > 1
+  # x + A_i >= B_j && B_j >= A_i - x
   mid = (ok + ng) / 2 
   cnt = 0
-  arr_A.each do |elem_a|
-    arr_B.each do |elem_b|
-      if elem_a >= elem_b - mid &&  elem_a <= mid - elem_b 
-        cnt += 1
-      end
-    end
+
+  arr_A.each do |elema|
+    # B_j <= A_i + x
+    up = u_bound(arr_B, elema + mid)
+    bottom = l_bound(arr_B, elema - mid)
+    puts "up:#{up}, bottom:#{bottom}"
+    cnt += up - bottom
   end
 
   puts "cnt:#{cnt}"
@@ -45,15 +77,16 @@ puts ok
 # x 以下の値がk個以上含まれる最小値がx
 # x 以下の値が k 個以上含まれるなら、x <= y を満たすすべての y について、 y 以下の値が k 個含まれる
 # x 以下の値が何個あるか調べて、条件を満たす最小の x を探索する。
-# A を固定したとき（＝列を固定）、A_i - B_j .abs <= x であればよい。
-# abs を外すと -(A_i - B_j) <= x or (A_i - B_j) <= x
-# つまり -A_i + B_j <= x or A_I - B_j <= x
-# A_i - B_j >= -x or A_i <= x - B_j
-# A_i >= B_j - x or A_i <= x - B_j
+# A を固定したとき（＝列を固定）、A_i - B_j .abs <= x であればよい。]
+# A_i - B_j について　-x <= A_i - B_j <= x である必要がある。
+# Bについてなら -x - A_i <= -B_j && -B_j <= x - A_i
+# x + A_i >= B_j && B_j >= A_i - x
 # 含まれている x 以下の個数を w とすると、 k <= w となる（k番目 = x 以下の値が k 個）最小値 x を求める
 
 
 
+# |x - y| <= 3
+# x - y >= -3 , x - y <= 3
 
 
 
