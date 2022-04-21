@@ -57,10 +57,11 @@ while (ok - ng).abs > 1
 
   arr_A.each do |elema|
     # B_j <= A_i + x
-    up = u_bound(arr_B, elema + mid)
+    upper = u_bound(arr_B, elema + mid)
     bottom = l_bound(arr_B, elema - mid)
-    puts "up:#{up}, bottom:#{bottom}"
-    cnt += up - bottom
+    byebug
+    puts "upper:#{upper}, bottom:#{bottom}"
+    cnt += upper - bottom
   end
 
   puts "cnt:#{cnt}"
