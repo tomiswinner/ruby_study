@@ -43,4 +43,5 @@ $ echo $ushiro $mae
 + :sh
   シェルに入れる。exit で出れる。
   [こちら](https://www.tweeeety.blog/entry/2016/11/10/001855)
-
++ :%y
+ファイル全体をコピーする。
