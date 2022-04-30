@@ -4,4 +4,6 @@
 cf) ssh 接続履歴
   接続したホストは$HOME/.ssh/known_hosts に保存されている。
 
-
++ config
+~/.ssh/config  に設定を記載すると、ssh 時に勝手に使用してくれる。
+~/.ssh/config はユーザーごとなので、sudo だと別のファイルが使用されるので注意。
