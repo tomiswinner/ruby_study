@@ -14,6 +14,7 @@ ex) cin >> n >> k;
 動的配列を宣言する。
 ex) vector<double exmp;
 ex) vector<int> a(k + 2, 0); k+2 個の 0 で要素を埋める。
+ex) vector<vector<int>> data(3, vector<int>(4));   int 型 2次元配列(3 × 4) の宣言
 
 + rbegin, rend
 降順ソート、以下どちらでもOK

@@ -38,6 +38,14 @@ $ echo $ushiro $mae
 
   + SSH_CONNECTION
   . Identifies the client and server ends of the connection. The variable contains four space-separated values: client ip-address, client port number, server ip-address and server port number.
+ 
+  + grep -rn "文字列"
+　文字列を -r ディレクトリを再帰的に、-n ファイル内の一致した行を返す。
+
++ cat /etc/[OS名など]-release
+  現在使用している linux distribution が確認できる。
+
+
 
 ## VIM
 + :sh
