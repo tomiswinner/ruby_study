@@ -31,7 +31,32 @@ Global Interpreter Lock なる仕組みがある。
 ひとまずCPUバウンドな処理は一スレッドでしか実行できず、処理の並列化が制限されると認識しておけば良いでしょう。<br>
 この仕組みの為、必ずしもプロセスにつき、nスレッドが使えるわけではない。
 
++ config/puma.rb
+- bind
+	使用するソケットをURIにて指定する？<br>
+	デフォは TCP で、 " bind 'tcp://0.0.0.0:9292' "<br>
+- worker
+	ワーカー数を指定、デフォ0。master プロセスから fork して生成。<br>
 
+- threads
+	worker 内のスレッドの数。min, max で指定する。<br>
+	(トラフィックに応じて、自動で増減させてくれるため) デフォは 0,16 <br>
 
+- environment
+	環境を指定する。デフォは "development" <br>
+	rails では、環境変数 RAILS_ENV に格納されているものを使用するのがよい。<br>
+	ex) environment ENV.fetch("RAILS_ENV")
 
+- demonize
+	デフォ false。デーモン化
+
+- pidfile
+	pid ファイルの置き場をパスで指定する。<br>
+	/tmp/pids/puma.pid がよい。（普通に起動するとここ）<br>
+	cf) pid ファイル<br>
+	プロセスIDが記述されているので、プロセスの制御などに使われる。<br>
+
+- stdout_redirect
+	標準出力/標準エラー出力先のファイルのパスを指定。<br>
+	ex) stdout_redirect '/u/apps/lolca/log/stdout', '/u/apps/lolcat/log/stderr"<br>
 
