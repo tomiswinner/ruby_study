@@ -1,3 +1,6 @@
+## SSL + ELB + Rails 用の設定
+[こちらを参照](https://qiita.com/HeRo/items/7063b86b5e8a2efde0f4)
+
 ## 流れ
 
 + 設定ファイル
@@ -59,6 +62,42 @@
 - client_max_body_size
 	リクエストボディサイズの最大値。0に設定すると、無制限となる。デフォで1MB らしい？<br>
 	動画や画像のアップロードに対して制限を設けるためのもの？
+
+- location 
+
+- proxy_pass
+	アクセスしてきたリクエストを飛ばす先。pumaの場合) " proxy_pass http://puma;"   となる。
+
+- proxy_set_header
+	リクエストのヘッダーの要素を書き換える。デフォルトでは以下２つが設定されている。<br>
+	- proxy_set_header Host $proxy_host;
+	- proxy_set_header Connection close;
+	その他の要素など<br>
+	+ X-Forwarder-For
+		クライントの IPアドレスを追加する設定。XFFヘッダ。<br>
+		$proxy_add_x_forwarded_for は $remote_addr が追加されたXFFヘッダ（コンマ区切り）。XFFヘッダがなければ単なる $remote_addr<br>
+		[proxy_add_x_forwarded_for](https://nginx.org/en/docs/http/ngx_http_proxy_module.html#var_proxy_add_x_forwarded_for)<br>
+		[XFFの流れ](https://christina04.hatenablog.com/entry/2016/10/25/190000)<br>
+		cf) $remote_addr<br>
+			アクセス元の IPアドレスが保存されている。クライアントからならクライアントIP、LBなら LBIP<br>
+	+ Host
+		[変数についてはこちらを参照](https://qiita.com/hyakt/items/c0aa8005d9a9700fbe45)<br>
+		$host を使った方が安全らしい。ただ、現在のレベルであればあまり気にしなくてよさそう。<br>
+		cf) Host リクエストヘッダ<br>
+			リクエストを送信する先のサーバーのホスト名 + ポート番号<br>
+	+ X-Real-IP
+		アプリケーション層用の送信元情報。<br>
+		
+- proxy_redirect
+	レスポンス用の location, refresh ヘッダの書き換え方法を指定する。<br>
+	
+- location
+	server がドメイン名など毎の設定なのに対し、location は URI 毎の設定を記述。<br>
+	location / {} だった場合、リクエストURI の先頭が "/" であった場合に適用される。<br>
+	Rails では静的ファイル(^~ /assets/ {}) に対して、location での振り分けを設定する。<br>
+
+
+
 
 
 + nginx -t
