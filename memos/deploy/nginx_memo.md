@@ -14,7 +14,44 @@
 			プロセッサ = CPU。CPU の処理を行う部分がコア。cat /proc/cpuinfo や lscpu などで確認できる。
 
 + /ect/nginx/conf.d/[app_name].conf
+- server_name   
+	HTTP リクエストのヘッダの、Host フィールドを調べ、一致した場合、そのserver ブロックの設定を使用する。<br>
+	※一致しなかった場合、デフォルトのサーバで処理する。
 - proxy_pass [転送先アドレス]
+- root 
+      cf) ドキュメントルート >> web 上に公開するディレクトリのルート<br>
+- include
+	他の設定ファイルを読み込んで適用する。
+	/etc/nginx/mime.types が書かれることが多い。<br>
+	基本的な設定は全て mime.types に書いてあるので、いじる必要はなしっぽい<br>
+	[include について](https://heartbeats.jp/hbblog/2012/02/nginx03.html)
+	cf) /etc/nginx/mime.types<br>
+
+		types ブロックが記述されているファイル。ファイル名の拡張子から、どの MIMEタイプで情報を返すか、を規定したファイル？<br>
+		MIME type >> Content-Type ヘッダと同義？ファイルをどう解釈するかブラウザに教える<br>
+- sendfile
+	クライアントへのレスポンスに関して、sendfile システムコールを使用しますか？というオプション。<br>
+	レスポンスが早くなるが、動作不安定だったりする。普通に運用する分にはONでよい。<br>
+	[sedfile について](https://qiita.com/yuse/items/fe05cec1a331306eac19)<br>
+	cf) sendfile システムコール<br>
+	between ファイルディスクリプタでデータコピーを行う。ファイルを介さずカーネル内で完結するので、read&write より速い。<br>
+- tcp_nopush 
+	レスポンスヘッダとファイルをセット送るかのオプション。ONにするとまとめて送るのでパケット数が少なくなる。<br>
+	普通に運用する分にはONでよさげ。<br>
+	[tcp_nopushについてはこちら](https://qiita.com/cubicdaiya/items/235777dc401ec419b14e)<br>
+	cf) TCP_CORK ON >> フレーム最大サイズより小さいデータを一定まで送信しませんよ、な設定。
+		[tcp_CORK on](https://code-examples.net/ja/q/1519642)<br>
+- tcp_nodelay
+	デフォでON。明示的に off にすることはほぼないっぽい？<br>
+	ソケットに TCP_NODELAY オプションが設定される。あまり小さいパケットを送らないようにするための設定。<br>
+	[tcp_nodelay と nginx](https://harukasan.hateblo.jp/entry/2016/01/25/170648)<br>
+
+- keepalive_timeout
+	keepalive(tcp通信を切断しないで送受信を行う仕組み)のタイムアウトの時間を設定。<br>
+	cf) keepalive  <br>
+		js,css,画像など複数のファイルを送受信するので、毎回接続切断すると効率悪くなる。
+		[keepalive の設定](https://ex1.m-yabe.com/archives/4305)<br>
+	
 
 
 + nginx -t
@@ -30,7 +67,11 @@ nginx が起動すると、"master process", "worker process", "cache manager pr
 リバースプロキシサーバーとして働く。<br>
 <クライアント> -(http)-> <nginx> -(socket)-> <puma> -> <rack> -> <ruby>	のようにリクエストは送信される。
 
-
++ nignx の特徴
+C10K問題に対応するため、コンテキストスイッチが少なくなるように作られ？<br>
+cpu リソースが必要な処理（処理に時間がかかる処理）。つまり、「小さなタスクをいっぱいこなす」のが得意っぽい<br>
+(だから、リバースプロキシや、静的コンテンツの対応に向いてるのか。)
+cf) C10K 問題　>> ハード的には問題なくても、プロセスが多くなってプロセス番号が足りなくなる問題。<br>
 
 ## 例
 + ポート80 にて
@@ -46,8 +87,16 @@ server {
 ```
 
 
+## 用語
++ モジュール
+	以下４種類。ディレクティブの上位のグルーピング。
+	- core   
+	- event
+	- http
+	- mail
+	重要なのは、http で、ここに server や location を書き込む。
 
 ## リンク
 + [Nignx 公式 for beginners](http://nginx.org/en/docs/beginners_guide.html)
 	
-+ 
++ [Nginx が何故ロードバランサとかに向いてるのか](https://www.slideshare.net/yujiotani16/nginx-16850347)
