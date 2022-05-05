@@ -52,6 +52,13 @@
 		js,css,画像など複数のファイルを送受信するので、毎回接続切断すると効率悪くなる。
 		[keepalive の設定](https://ex1.m-yabe.com/archives/4305)<br>
 	
+- types_hash_max_size
+	nginx は静的なデータ（サーバ名、ディレクティブ、MIME type、etc..) をすばやく処理するために、ハッシュテーブルを使用する<br>
+	[nginx hash 公式](http://nginx.org/en/docs/hash.html)<br>
+
+- client_max_body_size
+	リクエストボディサイズの最大値。0に設定すると、無制限となる。デフォで1MB らしい？<br>
+	動画や画像のアップロードに対して制限を設けるためのもの？
 
 
 + nginx -t
