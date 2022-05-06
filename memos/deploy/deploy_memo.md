@@ -3,7 +3,14 @@
 
 + プリコンパイル
 
++ EIP のインスタンスへの割り当て(EC2 から EIP を確認できる)
+
 + データベース設定
+
+  - データベースサーバを用意する。(aws なら RDSを使用しているはず)
+
+  - DB 操作用のクライアントソフトを用意する(remote)
+
   - ~/config/database.yml を設定する。(local)
 
   - " create database [appname] " で DB がリモートに作成されている(remote)

@@ -29,7 +29,10 @@ rubyの各バージョンのインストールを簡単にしてくれる。
 rbenv に使用されているgem
 rbenv install コマンドが使えるのはこれのおかげ
 
+
+
 # capistrano 一連の動作
+
 1.ssh 接続でサーバーへ接続
 2.github などからアプリのコードを取得
 3.各種デプロイに必要なタスクを自動でしてくれる
@@ -43,42 +46,61 @@ deploy.rb を他のstageにも使いまわせるようにするgem??
 >>extを使うと簡単にcapistranoの環境を変更できる
 具体的には、config/deploy.rb に共通の設定、環境ごとの設定をconfig/deploy/環境名.rb に書く
 
+
+
 ## deploy.rb 流れ
+deploy.rb は capistrano で使用する変数を宣言している。<br>
+set で設定。 fetch で使用する。<br>
 
-1. set :application [github リポジトリ名]
++ set :application [github リポジトリ名]
 
-2. set :scm, git (scm = source code management)
++ set :scm, git (scm = source code management)
 
-3. set :repository, githubのURL      ※サーバー側でgithub への ssh接続は設定しておくこと
++ set :repository, githubのURL      ※サーバー側でgithub への ssh接続は設定しておくこと
 
-4. set :user, capistranoをサーバーで実際に操作するユーザー(このユーザーはRW権限が必要、変数deploy_toにて指定する)
++ set :user, capistranoをサーバーで実際に操作するユーザー(このユーザーはRW権限が必要、変数deploy_toにて指定する)
 
-5. set :stages, []  環境をセット
++ set :stages, []  環境をセット
 
-6. set :default_stage
++ set :default_stage
 
-7. 環境毎の設定のため、config/deploy/環境名.rb を作成
+環境毎の設定のため、config/deploy/環境名.rb を作成
 
-8. 環境名.rbにアプリ用のサーバーの設定をする<br>
-server "my_fancy_server.com", :app, :web, :db, :primary => true,set :deploy_to, "/var/www/fancy_shoes"
+環境名.rbにアプリ用のサーバーの設定をする<br>
+ver "my_fancy_server.com", :app, :web, :db, :primary => true,set :deploy_to, "/var/www/fancy_shoes"
 
-9. cap deploy :setup
-<br>アプリのルートディレクトリから実行すること、このコマンドでは、capistranoはアプリ用のサーバーにssh接続し、deploy_to のディレクトリへcapistranoの作業用の特殊なフォルダを作る
+cap deploy :setup
+>アプリのルートディレクトリから実行すること、このコマンドでは、capistranoはアプリ用のサーバーにssh接続し、deploy_to のディレクトリへcapistranoの作業用の特殊なフォルダを作る
 
+ cap deploy:check　　　　ダミーのプログラムを展開し、問題がないか検証してくれる
 
-10. cap deploy:check　　　　ダミーのプログラムを展開し、問題がないか検証してくれる
-
-
-11. cap 環境名:deploy    にて実際にデプロイを行う<br>
-
+ cap 環境名:deploy    にて実際にデプロイを行う<br>
 
 set :ssh_optinos  >>  ssh の設定
+
+
+## config/deploy/[stage_name].rb
+server, user, roles を規定する。<br>
+ロールについては[こちらがわかりやすい](https://techracho.bpsinc.jp/hachi8833/2021_03_10/93741)<br>
+Rails なら nginx は静的コンテンツ用のサーバーとなるので、 web ロールとなる。操作対象のサーバーを指定するタグみたいな。独自もOK<br>
+
+
+## 
+
+
+## capistrano の亜種たち
+基本につかえるタスクを追加するためだけのものである。<br>
 
 + capistrano_rbenv の deploy.rb
 - set :rbenv_type, :user
 	どこにインストールされている rbenv を使用するか指定する。<br>
 	ホームディレクトリ >> :user      /usr/local/rbenv >> :system
 - set :rbenv_ruby, [ruby のバージョン]
+- append :linked_files  git にアップロードしてないものを指定（.env, config/master.key など）<br>
+手動で、sharedディレクトリ以下に scp などしておかないといけない。<br>
+capistrano では、デプロイされた内容は keep-release に設定されただけ、保存される。（symlink が貼られる)<br>
+ただし master.key や database.yml などリリースによって変更がないものは shared ディレクトリに保存される。shared ディレクトリに置くものが、 linkedfiles となる。<br>
+
 
 + capistrano3_puma
 for Capfile<br>
@@ -86,8 +108,6 @@ for Capfile<br>
 - install_plugin Capistrano::Puma::Systemd
 	puma daemon or Systemd サービスマネージャをどちらか選ぶが、pumad daemon はレガシー？
 
-for deploy.rb<br>
--
 
 
 
@@ -119,4 +139,7 @@ https://www.commonplaces.com/blog/web-development-what-is-staging/<br>
 + :pty
 pseudo-terminal のこと？
 
+## errors
++ ed25519 
+[こちらに書いてある通り、現在 gem が足りないポイ](https://k-koh.hatenablog.com/entry/2020/04/06/125037)<br>
 
