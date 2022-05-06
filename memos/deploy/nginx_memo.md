@@ -22,6 +22,7 @@
 	※一致しなかった場合、デフォルトのサーバで処理する。
 - proxy_pass [転送先アドレス]
 - root 
+	location 毎にどこを root ディレクトリにするかを指定する。<br>
       cf) ドキュメントルート >> web 上に公開するディレクトリのルート<br>
 - include
 	他の設定ファイルを読み込んで適用する。
@@ -95,6 +96,25 @@
 	server がドメイン名など毎の設定なのに対し、location は URI 毎の設定を記述。<br>
 	location / {} だった場合、リクエストURI の先頭が "/" であった場合に適用される。<br>
 	Rails では静的ファイル(^~ /assets/ {}) に対して、location での振り分けを設定する。<br>
+	^~ は正規表現で、前方一致で一度だけ評価。[locationについて](https://heartbeats.jp/hbblog/2012/04/nginx05.html)
+
+- gzip_static
+	gzip on の場合、既に圧縮済みのファイルはそのまま配信する。<br>
+	cpu リソースの削減に役立つらしい。静的コンテンツに対しては実施する。<br>
+
+- expires 
+	キャッシュの有効期限を設定する HTTPレスポンスヘッダ Expires を記述する。<br>
+	max にすると最大。動的コンテンツは cache したらNG。max は 2030年までなので注意.<br>
+
+- add-header
+	レスポンスヘッダにフィールドを任意のフィールドを付け加える。<br>
+	cf) Cache-Control <br>
+		レスポンスとリクエストで働きが異なる。 public はキャッシュOK の値。 <br>
+
+
+
+
+
 
 
 

@@ -1,4 +1,6 @@
 # デプロイ手順(puma, nginx)
++ 画像の記述方法が変更されている。 url("hoge.jpg") >> image-url("hoge.jpg") (local)
+
 + プリコンパイル
 
 + データベース設定
@@ -8,6 +10,7 @@
 
 + puma
   - config/puma.rb を設定する(local)
+	- [puma config](https://web-camp.online/lesson/curriculums/246/contents/2234)<br>
 
 + nginx
 
