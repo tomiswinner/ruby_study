@@ -10,9 +10,25 @@
 
 + puma
   - config/puma.rb を設定する(local)
-	- [puma config](https://web-camp.online/lesson/curriculums/246/contents/2234)<br>
+
+	+ [puma config](https://web-camp.online/lesson/curriculums/246/contents/2234)<br>
+
+  - "rails s -e production "(remote) にてアプリサーバ puma 起動
 
 + nginx
+  ※どちらも sudo 権限が必要
+  - /etc/nginx/nginx.conf の設定　　[こちら](https://web-camp.online/lesson/curriculums/246/contents/2237)<br>
+
+  - /etc/nginx/conf.d/[app_name].conf の設定
+
+  - " sudo nginx - t " で構文チェック
+
+  - " sudo chown -R ec2-user /var/lib/nginx " で nginx の実行権限を ec2-user へ。
+
+  - " sudo systemcctl restart nginx " にて設定反映
+
+  - " sudo systemcctl restart nginx " にて設定反映
+
 
 + その他
 
@@ -23,7 +39,7 @@
   - Bundler がインストールされている(remote)
 
   - rails がインストールされている (remote)
-    - sudo yum -y install patch libyaml-devel zlib zlib-devel libffi-devel make autoconf automake libcurl-devel sqlite-devel mysql-devel
+    + sudo yum -y install patch libyaml-devel zlib zlib-devel libffi-devel make autoconf automake libcurl-devel sqlite-devel mysql-devel
 
     - Node.js がインストールされている(remote)
 
@@ -31,7 +47,14 @@
     - git clone してある
 
   - config/master.key がコピーされている(local >> remote)
-    - .env がコピーされている(local >> remote)
+
+  - .env がコピーされている(local >> remote)
+
+  - " bundle install --path vendor/bundle --without test development " の実行(remote)
+
+  - " bundle exec rails assets:precompile RAILS_ENV=production " の実行(remote)
+
+  - " bundle exec rails db:migrate RAILS_ENV=production " の実行(remote)
 
 
 ```config/database.yml
