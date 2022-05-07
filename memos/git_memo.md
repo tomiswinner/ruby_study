@@ -1,3 +1,11 @@
++ gitignore の編集
+1. gitignore の編集（追加・削除）
+2. gir rm -r --cached [対象]　にてキャッシュを削除。
+3. add, commit, push rm -r --cached [対象]　にてキャッシュを削除。
+3. add, commit, push rm -r --cached [対象]　にてキャッシュを削除。
+3. add, commit, push rm -r --cached [対象]　にてキャッシュを削除。
+3. add, commit, push rm -r --cached [対象]　にてキャッシュを削除。
+3. add, commit, push
 
 + git large file error
   容量が大きすぎるファイルはアップロードできない。

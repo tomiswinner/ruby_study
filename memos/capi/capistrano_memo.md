@@ -103,10 +103,16 @@ capistrano では、デプロイされた内容は keep-release に設定され�
 
 
 + capistrano3_puma
+capistrano3-puma をデフォルト設定で使用すると、config/puma.rb などは完全に無視される<br>
+puma.rb は shared ディレクトリに capistrano が勝手に作成する。(" cap production puma:config ")<br>
+元の config/puma.rb などを使用する場合、config/deploy.rb にて、set :puma_conf でパスを設定する必要がある<br>
+[qiita 記事こちら](https://qiita.com/metheglin/items/227d14fff67d73d16cc2)<br>
 for Capfile<br>
 - install_plugin Capistrano::Puma  デフォで必要
-- install_plugin Capistrano::Puma::Systemd
-	puma daemon or Systemd サービスマネージャをどちらか選ぶが、pumad daemon はレガシー？
+- install_plugin Capistrano::Puma::Daemon
+	puma daemon or Systemd サービスマネージャをどちらか選ぶ。<br>
+	よくわからないが、Capistrano::Puma::[なにか] を install_plugin するとエラーが起きる。意味不明<br>
+
 
 
 
@@ -142,4 +148,31 @@ pseudo-terminal のこと？
 ## errors
 + ed25519 
 [こちらに書いてある通り、現在 gem が足りないポイ](https://k-koh.hatenablog.com/entry/2020/04/06/125037)<br>
+
++ bundle
+以下のようなエラー。リモートとローカルで bundler のバージョンが違うのが原因っぽかった。<br>
+bundler は ruby 2.6 とかは bundler のバージョン下げた方がよいっぽい？[こちら](https://qiita.com/aykusu/items/398a244ff14d39035624)<br>
+[リンクはこちら](https://qiita.com/aykusu/items/398a244ff14d39035624)<br>
+
+問題はsassc2.4 にあった。仕様により、2.4以降はインストールにとても時間がかかる。<br>
+そのため、capistranoで時間(?)のためエラーが起きていた。（しかもめっちゃ時間かかった）<br>
+Bootstrap の依存などが存在するが、sassc ~>2.0 の依存のため、2.1.0を指定してインストールすればOK<br>
+sassc 自体は依存関係にて自動DLされるので、一旦削除して、gemファイルに記載し、bundle update <br>
+Gemfile.lock には記載があっても、gem list ででてこない、手動で gem install したらいいんか？<br>
+一旦それで解決した。<br>
+
+[バージョンについて](https://haayaaa.hatenablog.com/entry/2018/10/29/235952)<br>
+[sassc2.4の問題](https://github.com/sass/sassc-ruby/issues/204)<br>
+
+
+
+
+bundle stderr: The deployment setting requires a Gemfile.lock. Please make sure you have
+checked your Gemfile.lock into version control before deploying.
+(Backtrace restricted to imported tasks)
+cap aborted!
+SSHKit::Runner::ExecuteError: Exception while executing as ec2-user@18.177.75.218: bundle exit status: 16
+bundle stdout: Nothing written
+bundle stderr: The deployment setting requires a Gemfile.lock. Please make sure you have
+checked your Gemfile.lock into version control before deploying.
 
