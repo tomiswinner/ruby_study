@@ -22,3 +22,7 @@ Failure/Error: require 'rails_helper'<br>
 LoadError:<br>
   cannot load such file -- rails_helper<br>
 
+[こちらのリンクを確認](https://blog.beaglesoft.net/entry/2017/03/20/100000)<br>
+解決せず >>" bundle exec rspec:install " を実行も、ファイルは存在。同じエラーが発生。
+
+
