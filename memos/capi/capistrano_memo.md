@@ -1,8 +1,33 @@
 # 一連の流れ
 1. gem に capistrano を記述
-2. bundle exec cap install を実行する。
-	※ 既存の Capfile, capfile がないように。
-3. [アプリルートdir]/config/deploy.rb を編集し、自動実行するタスクを記述。
+
+```
+  gem 'capistrano', '~> 3.10', require: false                                                                                
+  gem 'capistrano-rails', '~> 1.6', require: false
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano3-puma'
+```
+ 
+2. bundle exec cap install を実行して基本の設定ファイルを作成。
+	※ 既存の Capfile, capfile がないように。<br>
+
+3. Capfile を編集し、使用する内容に応じて capistrano のタスクを設定する
+
+3. [アプリルートdir]/config/deploy.rb を編集し、capistrano のタスクのための変数を設定する。
+
+4. " bundle exec cap [ステージ名] deploy:check " で、shared ファイルを生成し、shared ファイルへ必要なファイルをアップロード
+
+5. " bundle exec cap [ステージ名] deploy --dry-run --trace " にてタスクを確認。
+
+6. " bundle exec cap [ステージ名] deploy " にて実行。
+
+[基本的にはこちらのリンクを参照する](https://pikawaka.com/rails/capistrano)<br>
+puma である点が若干異なるが、pumaの設定ファイルは capistrano 側で自動生成されるので、<br>
+capistrano3-puma をインストールして使えばそんなに変わらない。<br>
+
+
+
 
 
 # ++capistrano

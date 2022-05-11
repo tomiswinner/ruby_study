@@ -42,6 +42,9 @@ $ echo $ushiro $mae
   + grep -rn "文字列"
 　文字列を -r ディレクトリを再帰的に、-n ファイル内の一致した行を返す。
 
+  + grep "文字列" -rl [フォルダ]
+  検索したい文字列を再帰的にフォルダを探す<br>
+
 + cat /etc/[OS名など]-release
   現在使用している linux distribution が確認できる。
 
