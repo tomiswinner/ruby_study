@@ -15,3 +15,19 @@ LOAD_PATH なる変数に config.autoload_paths にかかれている内容は�
 		__dir__ は現在実行中のディレクトリ。メソッド。<br>
 		[詳細はこちら](https://k-koh.hatenablog.com/entry/2019/12/20/143740)<br>
 
+	- cf) File.expand_path >> パスを評価する。irb で動作確認してみるのが手っ取り早い。<br>
+
++ require
+1.フルパス or 2.ファイル のどちらか渡す。フルパスの場合、記載の通りの場所を探す。<br>
+ファイル名の場合、事前に定義されたディレクトリから、一致するものを探す<br>
+[こちら](https://www.thoughtco.com/requre-method-2908199#:~:text=The%20require%20method%20takes%20the,look%20there%20for%20the%20file.)<br>
+ if the argument is a shortened name, the require method will search through a number of pre-defined directories on your system for that file. Using the shortened name is the most common way of using the require method.<br>
+※現在地からのパスはだめなんだ。だからか。<br>
+
+Rails が起動すると、config/boot.rb が起動し、boot.rb によって $LOAD_PATH がセットされる。<br>
+これが Rails における、 pre-defined なディレクトリとなる。<br>
+[ここがわかりやすいよ](https://stackoverflow.com/questions/417179/how-does-ruby-know-where-to-find-a-required-file)<br>
+
+	- require_relative  >> ファイル名を現在のディレクトリからの相対パスで探しに行く。<br>
+
+
