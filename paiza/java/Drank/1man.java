@@ -9,9 +9,9 @@ public class Main{
 		  nums[i]  = Integer.parseInt(line);
 		}
 		if(nums[0] * nums[1] >= 10000){
-			System.out.println("Yes");
+			System.out.println("yes");
 		}else{
-			System.out.println("No");
+			System.out.println("no");
 		}
 	
 	}
