@@ -1,3 +1,59 @@
+
++ fatal: cannot lock ref 'HEAD': unable to resolve reference 'refs/heads/master': reference broken
+コミットできない。git push 等の際に、VM が切断したりで git のどこかがいかれたみたい。<br>
+index ファイルを削除して修正を試みたら上記エラー。<br>
+1. Unsure the root cause of the "reference broken". To fix it, delete this file .git/refs/remotes/origin/master, and git fetch to retrieve it back. とのことで、<br>
+" rm .git/refs/remotes/origin/master " >> " git fetch "<br>
+解決せず、fetch までは成功するものの、commit しようとすると、同じエラーが発生<br>
+2. git reflog で HEAD の移動を確認する
+fatal: your current branch appears to be broken<br>
+あらら、壊れてるらしい。>> ".git/refs/heads" が現在のブランチらしい。ここを調べてみる。<br>
+cat してみても、何もでてこない。白紙のファイルや。<br>
+ちなみに、git add はできる。git commit は上記エラー、 git pull は、stash しろ、git stash は "You do not have the initial commit yet " とのことでツミ。<br>
+git のログを確認する。 >> .git/logs/refs/heads/[branch_name]<br>
+vim で開くと、ログが残ってる。タイムスタンプなどを確認すると、5/18 22:00とかのものが最下行にあった。<br>j
+[こちらの通り、.git/refs/heads/branch_name](https://qiita.com/watamana/items/b08000270707b5824522)へ、<br>
+最後のログをコピペ >> error: object file .git/objects/da/5ebe22f261b086559d1b938aaa91b1c3ee9063 is empty
+fatal: loose object da5ebe22f261b086559d1b938aaa91b1c3ee9063 (stored in .git/objects/da/5ebe22f261b086559d1b938aaa91b1c3ee9063) is corrupt<br>
+また新しいエラー、tree オブジェクトにおかしなもん（emptyファイルとか)があるのが問題らしい<br>
+正直ディレクトリ削除して clone したほうが早いよねこれ。どっかの公式っぽいリファレンスにも、新規追加や編集したファイルを、<br>
+どっか別の場所に移して git clone する。そのあと復元してけって書いてあったのでその通りにする。<br>
+
+
+
+
+
+
+
+
++ git status
+fatal: index file smaller than expected<br>
+
+.git/index ファイルがおかしいらしい<br>
+
+cf).git/index とは<br>
+git add したときに、add したファイルの "blob オブジェクト"と"名前"が記載されるバイナリファイル。<br>
+" git ls-file --stage " にて、 .git/index を人間にやさしく表示<br>
+まれに壊れるが、" rm .git/index " >> " git reset " で簡単に復元できるらしい。<br>
+
+
+
+
+
+
++ Your local changes to the following files would be overwritten by merge
+対処方法
+1. rm などでファイル削除
+2. git stash で隠す。（ただし追跡してないものはもちろん不可能）
+3. git fetch origin master + git reset --hard origin/master にて強制マージ
+[こちらが詳しい](https://qiita.com/15grmr/items/433ee3b47828aaad32a8)<br>
+cf) git fetch と git pull の違い<br>
+fetch は最新情報を origin/master ブランチへ持ってくる。origin/master ブランチとは、リモート追跡ブランチ。<br>
+git pull は fetch + merge , origin/master に持ってきた後、ローカルの master ブランチまでひっぱる。<br>
+
+
+
+
 + gitignore の編集
 1. gitignore の編集（追加・削除）
 2. gir rm -r --cached [対象]　にてキャッシュを削除。
