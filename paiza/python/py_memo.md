@@ -1,3 +1,14 @@
++ python atcoder 2秒制限。
+Nが10**6 → O(N)かO(N log N)
+Nが10**5 → O(N log N)かO(N log2 N)
+Nが3000 → O(N2)
+Nが300 → O(N3)(シンプルな処理)
+Nが100 → O(N3)
+Nが50 → O(N4)
+Nが20 → O(2N)かO(N*2N)
+くらいかなあという感じですね。
+[こちら](https://cppx.hatenablog.com/entry/2017/08/06/104144)<br>
+
 + map で組み込み以外を使う。
 arr = map(lambda x: x.split(), "1 2 3 4 5 6\n8 1 3 3 1 8".splitlines())                  
 
