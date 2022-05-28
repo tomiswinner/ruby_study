@@ -9,6 +9,11 @@ Nが20 → O(2N)かO(N*2N)
 くらいかなあという感じですね。
 [こちら](https://cppx.hatenablog.com/entry/2017/08/06/104144)<br>
 
++ 二次元配列
+×　arr = [[0] * 4] * 3 これはNG　なぜならリストのオブジェクトidは一緒だから。<br>
+○　arr =  [[0] * 4 for i in range(3)] が正解。これなら別のオブジェクト扱いになる<br>
+[こちらを参照してください](https://note.nkmk.me/python-list-initialize/)<br>
+
 + map で組み込み以外を使う。
 arr = map(lambda x: x.split(), "1 2 3 4 5 6\n8 1 3 3 1 8".splitlines())                  
 
