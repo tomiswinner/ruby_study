@@ -1,15 +1,20 @@
 class Solution:
   def jump(self, nums: List[int]) -> int:
     next_arrival_point = nums[0]
-    max_jump_endpoint = 0
+    current_endpoint = 0
     ans = 0
     i = 1
     while 
-      if i >= max_jump_endpoint:
-        max_jump_endpoint = next_endpoint
+      if i >= current_endpoint:
+        current_endpoint = next_endpoint
         ans += 1
       next_endpoint = max(next_arrival_point, i + N[i])
       i += 1
+
+
+
+
+
       
 
 
