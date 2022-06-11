@@ -15,7 +15,10 @@ class Solution:
             # 購入した個数分引き算する
             for k in range(len(purchased)):
                 tmp_purchased[k] -= setitems[k]
-            if max() <= 0:
+            # まだ必要な品物が買い切れていない場合、つぎ足す。
+            tmp_val_and_left = tmp_val + sum([tmp_purchased[l] * price[l] for l in range(len(price))])
+            tmp_val = min(tmp_val_and_left, dfs(tmp_purchased) + 
+
 
             
             
