@@ -1,7 +1,7 @@
 class Solution:
   def jump(self, nums: List[int]) -> int:
-    next_arrival_point = nums[0]
-    max_jump_endpoint = 0
+    next_jump_endpoint = nums[0]
+    current_point = 0
     ans = 0
     i = 1
     while 
