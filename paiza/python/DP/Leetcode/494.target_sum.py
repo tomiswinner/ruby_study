@@ -1,3 +1,5 @@
+import collections
+import time
 from typing import List
 
 # TLE なので再考必要
@@ -27,8 +29,19 @@ sol1 = Solution()
 print(sol1.findTargetSumWays([1],1))
 sol2 = Solution()
 print(sol2.findTargetSumWays([1,0],1))
+            
+            
+class Solution:
+    def findTargetSumWays(self, nums: List[int], target: int) -> int:
+        count = collections.defaultdict(int)
+        count[0] = 1
+        for n in nums:
+            tmp = collections.defaultdict(int)
+            for k,v in count.items():
+                tmp[k+n] += v
+                tmp[k-n] += v
+            count = tmp
+            print(count)
 
-            
-            
-            
-
+sol = Solution()
+sol.findTargetSumWays([1,1,1,1,1], 3)
