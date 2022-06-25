@@ -41,7 +41,7 @@ class Solution:
                 tmp[k+n] += v
                 tmp[k-n] += v
             count = tmp
-            print(count)
+        return count[target]
 
 sol = Solution()
-sol.findTargetSumWays([1,1,1,1,1], 3)
+print(sol.findTargetSumWays([1,1,1,1,1], 3))
