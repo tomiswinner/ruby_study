@@ -1,3 +1,9 @@
++ main メソッド
+java は main メソッドがエントリポイントとなる言語<br>
+(python とかは先頭行から実行されていくのかな)<br>
+java のメインメソッドは、public static void main(String[] args) でなければならない。（エントリポイントとなる条件）<br>
+[こちらがリンク](https://www.bold.ne.jp/engineer-club/java-main)<br>
+
 + java のインストール（amazon linux 2, OpenJDK9)
 [こちらを参照ください](https://weblabo.oscasierra.net/installing-openjdk9-on-centos7/)<br>
 cf) alternatives
