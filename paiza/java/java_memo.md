@@ -1,3 +1,10 @@
++ java のインストール（amazon linux 2, OpenJDK9)
+[こちらを参照ください](https://weblabo.oscasierra.net/installing-openjdk9-on-centos7/)<br>
+cf) alternatives
+既存ファイルに新しい名前をつけて管理するためのもの<br>
+
+
+
 + amazon correto
 amazon がサポートする Open JDK
 
