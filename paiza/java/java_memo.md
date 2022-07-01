@@ -1,3 +1,22 @@
++ Javadoc と アノテーション
+- javadoc
+python の docstring(help()で呼び出される、メソッドなどについての使い方文)に相当するもの<br>
+残念ながら、help関数みたいに、CLI上で確認できるわけじゃないっぽい...?<br>
+javadoc で 公式のドキュメントを見るのが手っ取り早いかもや<br>
+- アノテーション
+javadoc は for human. であれば、javadoc for 機械。<br>
+
+
+
+
+
+
++ printf
+java には python や ruby にあるような f'{val}' がない。<br>
+全く同じものはないので、printf や format で代用する<br>
+
+
+
 + main メソッド
 java は main メソッドがエントリポイントとなる言語<br>
 (python とかは先頭行から実行されていくのかな)<br>
@@ -8,6 +27,13 @@ java のメインメソッドは、public static void main(String[] args) でな
 [こちらを参照ください](https://weblabo.oscasierra.net/installing-openjdk9-on-centos7/)<br>
 cf) alternatives
 既存ファイルに新しい名前をつけて管理するためのもの<br>
+alternatives --install /usr/bin/java java /opt/jdk-.../bin/jar 1 <br>
+1. /usr/bin/java -> /usr/bin に指定した名前で、/etc/alternatives 配下へのシンボリックリンクをはる ex) java -> /etc/alternatives/java<br>
+2. /etc/alternatives/java -> /opt/jdk-.../bin/java へのシンボリックリンクとなっている<br>
+[alternatives で java のバージョン管理を行うにはこちら](https://necoyama3.hatenablog.com/entry/20110505/1304587888)<br>
+[ちなみにopenjdk のダウンロードはこちらから](https://jdk.java.net/archive/)
+
+
 
 
 
