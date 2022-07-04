@@ -24,9 +24,11 @@ class Solution {
 					root.left = l;
 					root.right = r;
 					rst.add(root);
-					System.out.printf("rst: %c", rst.toString());
 				}
 			}
+		}
+		for( int i=1; i<rst.size(); i++ ){
+			System.out.printf("rst[%d]: %d\n", i, rst.get(i).val);
 		}
 		return rst;
 	}
