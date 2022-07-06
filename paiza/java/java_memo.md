@@ -1,3 +1,17 @@
++ classpath と外部ライブラリの使用
+jar ファイル -> .class を集約したファイル、外部ライブラリ<br>
+jarファイルを使用するには、classpath を指定する<br>
+	- 環境変数 CLASSPATH の設定
+	- java コマンド実行時に -classpath オプションにて指定
+cf) build path は Eclipse を使用するうえでの用語(?)、とりあえず意識しなくてもよい<br>
+
+
+
+
++ java の inf
+Integer.MAX_VALUE を使用すると、python の inf みたいなことをできる<br>
+
+
 + Javadoc と アノテーション
 - javadoc
 python の docstring(help()で呼び出される、メソッドなどについての使い方文)に相当するもの<br>

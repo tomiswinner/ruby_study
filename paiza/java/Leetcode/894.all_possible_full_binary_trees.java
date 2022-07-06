@@ -3,7 +3,14 @@ import java.util.*;
 class Main{
 	public static void main(String[] args){
 		Solution sl = new Solution();
-		System.out.println(sl.allPossibleFBT(7));
+		List<TreeNode> arl = new ArrayList<>();
+		arl = sl.allPossibleFBT(7);
+		System.out.println(arl);
+		for( int i=1; i<arl.size(); i++){
+			System.out.println(arl.get(i).val);
+			System.out.println(arl.get(i).left);
+			System.out.println(arl.get(i).right);
+		}
 	}
 }
 
