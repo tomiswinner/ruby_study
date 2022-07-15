@@ -1,3 +1,15 @@
++ Map の value で sort する
+List<Entry<Integer, Integer>> list = new ArrayList<>(map1.entrySet());<br>
+list.sort(Entry.comparingByValue());<br>
+でできる。<br>
+- map.entrySet() -> key + value の組み合わせの Map.Entry が要素となる Set を返す。<br>
+- エントリー -> map における key + value の１セットのことをエントリーという。なんでやねん。。。<br>
+- Map.Entry が要素となる list を作って、そのエントリにたいしてそれぞれ、comparingByValue()で比較をする<br>
+- Entry.comparingByValue() -> Map.Entry を比較するコンパレータを返す<br>
+[map sort の方法の元リンクはこちら](https://www.delftstack.com/ja/howto/java/how-to-sort-a-map-by-value-in-java/)<br>
+[comparator/comparable についてはこちら](http://teqspaces.com/Java/7)  むずすぎる...<br>
+
+
 + classpath と外部ライブラリの使用
 jar ファイル -> .class を集約したファイル、外部ライブラリ<br>
 jarファイルを使用するには、classpath を指定する<br>
