@@ -6,6 +6,7 @@ run と close を runclose クラスとして実装して、メソッドを書�
 つまり、違うクラスなのに、同じインターフェースとして引数へ渡せるんですね。<br>
 - ほかにも、interface として役割を切り出せるっていうのも利点だね。ちなみに Iterable みたいな ~~able は interface<br>
 こういうデフォルトの interface を自作クラスに導入することによって、簡単に機能導入できるのも利点<br>
+[こちらがよく解説されているよ（長いけど）](https://www.bold.ne.jp/engineer-club/java-implements#implements)<br>
 
 
 
