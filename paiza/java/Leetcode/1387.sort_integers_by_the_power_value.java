@@ -1,6 +1,9 @@
 import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 class Main{
   public static void main(String[] args){
@@ -34,9 +37,13 @@ class Solution{
         }
       }
     }
-    int[] answers = new int[hi-lo+1];
+    List<Entry<Integer, Integer>> tmp_answers = new ArrayList<>(answers.entrySet());
+    List<Entry<Integer, Integer>> answers = new ArrayList<>();
+    for (int i=lo; i<=hi; i++){
+      answers.put()
+    }
+
     for( int i=0; i<answers.length; i++){
-      System.out.printf("dp.get(%d)\n",lo+i);
       System.out.printf("dp:%d\n",dp.get(lo+i));
       answers[i] = dp.get(lo+i);
     }

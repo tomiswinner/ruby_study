@@ -1,3 +1,15 @@
++ implements
+部品を実装するのが、implements<br>
+run と close を runclose クラスとして実装して、メソッドを書けば、Run クラスとしても、Close クラスとしても機能する。<br>
+- なにがいいのか？
+クラスの継承関係がなくても、同じメソッドを implements していることで、引数として受け取って同じメソッドを実行できる（メソッド名は implements している部品が共通するので）<br>
+つまり、違うクラスなのに、同じインターフェースとして引数へ渡せるんですね。<br>
+- ほかにも、interface として役割を切り出せるっていうのも利点だね。ちなみに Iterable みたいな ~~able は interface<br>
+こういうデフォルトの interface を自作クラスに導入することによって、簡単に機能導入できるのも利点<br>
+
+
+
+
 + Map の value で sort する
 List<Entry<Integer, Integer>> list = new ArrayList<>(map1.entrySet());<br>
 list.sort(Entry.comparingByValue());<br>
