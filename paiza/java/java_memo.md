@@ -1,3 +1,15 @@
++ 二次元配列の出力
+import java.util.Arrays;<br>
+System.out.println(Arrays.deepToString(二次元配列));　が一番楽そう<br>
+[これ以外にも方法はあるのでこちらを参照](https://www.delftstack.com/ja/howto/java/java-print-2d-array/)<br>
+
+
+
++ ()? 条件演算子
+int score = 76;
+String result = (score > 70)? "yeah" : "booo";
+>> OK 
+
 + implements
 部品を実装するのが、implements<br>
 run と close を runclose クラスとして実装して、メソッドを書けば、Run クラスとしても、Close クラスとしても機能する。<br>
