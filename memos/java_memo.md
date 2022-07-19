@@ -1,3 +1,12 @@
++ ジェネリック型宣言 generic
+classs クラス名<E>{<br>
+	E フィールド名; <br>
+}<br>
+このとき、クラス名 = raw type(原型) と呼ばれる。<E> の中で型を指定することで、インスタンス化を汎用的にできる<br>
+
+
+
+
 + 二次元配列の出力
 import java.util.Arrays;<br>
 System.out.println(Arrays.deepToString(二次元配列));　が一番楽そう<br>
