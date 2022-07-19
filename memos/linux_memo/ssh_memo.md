@@ -1,3 +1,9 @@
++ Remote SSH vscode が接続できないとき
+コマンドパレット(ctrl+shift+p)を起動して、 remote-ssh kill vscode server をして、再起動した直った。<br>
+[こちらの_stackoverflowを参照した](https://stackoverflow.com/questions/67374506/visual-studio-code-remote-ssh-no-longer-working-waiting-for-server-log)<br>
+
+
+
 + ssh の暗号化
 1. Symmetric Key (秘密鍵)
 通信の暗号化に使われる。(http"s"的な)
