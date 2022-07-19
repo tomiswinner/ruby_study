@@ -15,7 +15,8 @@ public key(公開鍵) と private key(秘密鍵)を使って暗号化<br>
 [こちらを参照](https://www.hostinger.com/tutorials/ssh-tutorial-how-does-ssh-work#How_Does_SSH_Work)<br>
 
 
-+ scp -P [ポート番号] -F [configファイル] [対象ファイル] [hostname]@:[ディレクトリ]
++ scp -P [ポート番号] -F [configファイル] [対象ファイル] [ユーザー名]@[IPアドレス]:[ディレクトリ]
+config ファイルは vagrant なら vagrant ssh-config > config とかでファイル出力しておくと楽<br>
 [対象]がディレクトリなら -r オプション<br>
 - scp の仕組みは?
 SSH ベース、ssh 接続を確立している必要があるらしい、、あれ？<br>
