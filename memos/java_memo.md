@@ -1,3 +1,17 @@
+#### java で max を求める方法
++ stream を使う<br>
+~~~java
+import java.util.\*;
+IntStream inst = Arrays.stream(配列);
+OptionalInt opin = inst.max();
+int maxint = opin.getAsInt();
+~~~
++ Stream ってなんやねん❓❓<br>
+配列やコレクションをうまく処理するための java8 の機能、、らしい<br>
+今までめんどくさかった配列への処理を steam を介せば簡単になるよーって話っぽいわ<br>
+
+
+
 + ジェネリック型宣言 generic
 classs クラス名<E>{<br>
 	E フィールド名; <br>
