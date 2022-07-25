@@ -1,11 +1,15 @@
+#### ls | find -type f -not -name [検索語句] | xargs mv -t [移す場所]
+指定したファイル以外を移す慣用句。<br>
+" find -not " は指定した条件を打ち消せる。複数オプションを指定した場合 and になる<br>
+" mv -t [場所]" は移動先を明示する。<br>
 
-+ find -name [search_word] -type f | xargs mv -t [destionation] 
+#### find -name [search_word] -type f | xargs mv -t [destionation] 
 検索したものを全て指定のディレクトリに移せる。
 ポイントは xargs と mv -t   mv は標準入力をもらえないので、
 xargs を使用。移動先は -t で明示しないといけない。
 -type f はファイルのみ検索
 
-+ ヒアストリング
+#### ヒアストリング
 bash で、とあるコマンドの標準入力に文字列を渡すとき、
 
 $ echo "hoge" | toarucmd
@@ -28,7 +32,7 @@ $ read mae ushiro <<< "mae ushiro"
 $ echo $ushiro $mae
 ヒアストリングの使いどころの一例です。
 
-+ scp [コピー対象ファイル] [sshユーザー名]@[ssh ipアドレス]:/[パス]
+#### scp [コピー対象ファイル] [sshユーザー名]@[ssh ipアドレス]:/[パス]
   ローカルPC の　.ssh/config ファイルに設定が書いてある。
   Host が設定されていれば、それを目的語にして scp, ssh ができる。
   以下の環境変数を確認すればわかる
@@ -46,20 +50,14 @@ $ echo $ushiro $mae
   + grep "文字列" -rl [フォルダ]
   検索したい文字列を再帰的にフォルダを探す<br>
 
-+ cat /etc/[OS名など]-release
+#### cat /etc/[OS名など]-release
   現在使用している linux distribution が確認できる。
 
-
-
-
-
-
-
 ## VIM
-+ :sh
+#### :sh
   シェルに入れる。exit で出れる。
   [こちら](https://www.tweeeety.blog/entry/2016/11/10/001855)
-+ :%y
+#### :%y
 ファイル全体をコピーする。
 
 
