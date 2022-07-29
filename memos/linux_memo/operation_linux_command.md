@@ -1,3 +1,9 @@
+#### **/var/log/messages がない場合**
++ ubuntu は /var/log/messages を使ってないらしい。/var/log/syslog を使っているとか<br>
+
+
+
+
 #### ls | find -type f -not -name [検索語句] | xargs mv -t [移す場所]
 指定したファイル以外を移す慣用句。<br>
 " find -not " は指定した条件を打ち消せる。複数オプションを指定した場合 and になる<br>
