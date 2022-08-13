@@ -1,3 +1,14 @@
+#### **配列の出力**
+普通の出力は、Arrays.toString() でOK<br>
+多次元配列は、Arryas.deepToString() でOK<br>
+
+#### **無名二次元配列の作成**
+~~~
+new int[][] {{1,2},{1,3}} 
+~~~
+でできちゃった。<br>
+
+
 #### **アンダースコア変数**
 変数にアンダースコアをつけるケースがいくつか決まっている<br>
 [詳細はこちらのサイトがよい](https://lubryqate.com/variable_with_under_score/)<br>
