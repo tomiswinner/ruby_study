@@ -1,5 +1,40 @@
+#### ** 引数の指定**
+関数を作成して引数を作るとき、中の構造まで指定しないとメソッドつかえないよ<br>
+ex)<br>
+~~~
+private boolean dfs(Map map){
+	map.get(hoge).isEmpty();
+}
+~~~
+だと、map の中身が指定されていないので、isEmpty() はつかえない。<br>
+Map の中身まで指定してやる必要がある。<br>
+
+
+
+#### **Exception java.lang.UnsupportedOperationException**
+[こちらをご覧ください](https://stackoverflow.com/questions/9320409/unsupportedoperationexception-at-java-util-abstractlist-add)<br>
+Arrays.asList() で生成される List は固定長のリストらしい。しらんわそんなん<br>
+だから add とかできない。<br>
+
+
+
+#### **ArrayList one liner 一行で書く！**
+~~~
+List<Integer> x = new ArrayList<Integer>(Arrays.asList(1,2,3));
+~~~
+[詳細はこちら、普通に_Arrays.asList()だけだと、immutable_になるので注意ふざけんな](https://stackoverflow.com/questions/1005073/initialization-of-an-arraylist-in-one-line)<br>
+
+
+応用（map へ一行でput)
+~~~
+mp.put(1, new ArrayList<Integer>(Arrays.asList(1,2,3)))
+~~~
+
+
+
 #### **配列の出力**
-普通の出力は、Arrays.toString() でOK<br>
+普通の配列は、Arrays.toString() でOK<br>
+list などは Arrays.asList() でOK<br>
 多次元配列は、Arryas.deepToString() でOK<br>
 
 #### **無名二次元配列の作成**
