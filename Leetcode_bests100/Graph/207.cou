@@ -1,0 +1,46 @@
+class Main{
+	public static void main(String[] args){
+	}
+}
+
+class Solution{
+	public boolean canFinish(int numCourse, int[][] prerequisites){
+		boolean[] dp = new boolean[numCourse];
+		Set<Integer> visited = new HashSet<>();
+		Map<Integer, ArrayList<Integer>> mp = new HashMap<>();
+		for (int i=0; i<numCourse; i++){
+			mp.put(i, new ArrayList<Integer>());
+		}
+		for (ArrayList reqs : prerequisites){
+			mp.get(reqs[0]).add(reqs[1]);
+		}
+
+		for (int i=0; i<numCourse; i++){
+			dfs(
+		}
+
+
+	}
+
+	private boolean dfs(int course, Map<Integer, ArrayList> mp){
+		if (mp.get(course).isEmpty()){
+			return true;
+		}
+
+		if (dfs(course, mp) == false || dp[course] == false){
+			return false;
+		}
+
+    if (visited.contains(course)){
+			return false;
+		}
+
+		visited.add(course);
+		for (ArrayList reqs : mp.get(course)){
+			dfs();
+		}
+
+		
+		
+	}
+}
