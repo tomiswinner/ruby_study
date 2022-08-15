@@ -1,0 +1,56 @@
+class Main{
+  public static void main(String[] args){
+
+  }
+}
+
+
+class Node{
+  public int val;
+  public List<Node> neighbors;
+  
+  public Node(){
+    val = 0;
+    neighbors = new ArrayList<Node>();
+  }
+
+  public Node(int _val){
+    val = _val;
+    neighbors = new ArrayList<Node>();
+  }
+
+  public Node(int _val, ArrayList<Node> _neighbors){
+    val = _val;
+    neighbors = _neighbors;
+  }
+}
+
+
+
+class Solution{
+  public Node cloneGraph(Node node){
+    Map<Node, Node> mp = new HashMap<>();
+    Queue<Node> q = new ArrayList<>();
+    mp.put(node, new ArrayList<Node>());
+    q.add(node);
+
+    while (true){
+      now_node = q.remove();
+      for (Node nei : now_node.neighbors){
+        q.add(nei);
+        if (!mp.containsKey(nei)){
+          mp.put(nei, new Node(nei.val, new ArrayList<Node>()));
+        }
+        mp.get(now_node).neighbors.add(mp.get(nei));
+      }
+      if(q.isEmpty()){
+        break;
+      }
+    }
+    
+    return mp.get(node);
+    }
+
+  }
+
+}
