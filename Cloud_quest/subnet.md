@@ -1,3 +1,7 @@
+#### NACL と セキュリティグループの違いとベストプラクティス
+[こちらをどうぞ](https://dev.classmethod.jp/articles/why-i-prefer-sg-to-nacl/)<br>
+
+
 #### NAT gateway
 You can use a NAT gateway so that instances in a private subnet can connect to services<br>
 outside your VPC but external services cannot initiate a connection with those instances.<br>
