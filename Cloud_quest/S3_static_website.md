@@ -1,5 +1,4 @@
-#### 
-
+#### ARN = Amazon Resource Name
 
 
 
