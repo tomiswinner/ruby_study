@@ -158,6 +158,7 @@ cf) build path は Eclipse を使用するうえでの用語(?)、とりあえ�
 
 #### java の inf
 Integer.MAX_VALUE を使用すると、python の inf みたいなことをできる<br>
+Integer.MIN_VALUE が最小<br>
 
 
 #### Javadoc と アノテーション
